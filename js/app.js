@@ -36,6 +36,8 @@ function seleccionarMascotaJugador() {
     seleccionarMascotaEnemigo()
 }
 
+//Seleccion del enemigo aleatoriamente segun el numero escogido aleatoriamente desde un rango de 1 a 4
+//Los cualea representan los nombre de cada creatura
 function seleccionarMascotaEnemigo(){
     const selectAleatorio = aleatorio(1, 4)
     const spanMascotaEnemigo = document.getElementById('mascota-enemigo')
@@ -48,11 +50,10 @@ function seleccionarMascotaEnemigo(){
         spanMascotaEnemigo.innerHTML = "Ratigueya"
     } else {
         spanMascotaEnemigo.innerHTML = "Tucapalma"
-    }{
-        
     }
 }
-
+ 
+//Ataque del Jugador segun sea su eleccion presionando alguno de los botones de ataque - invoca la funcion
 function ataqueFuego() {
     ataqueJugador = "FUEGO"
     ataqueAleatorioEnemigo()
@@ -66,6 +67,7 @@ function ataqueTierra() {
     ataqueAleatorioEnemigo()
 }
 
+//El ataque escogido por el enemigo aleatoriamente
 function ataqueAleatorioEnemigo() {
     let ataqueAleatorio = aleatorio(1, 3)
 
@@ -77,13 +79,30 @@ function ataqueAleatorioEnemigo() {
         ataqueEnemigo = "TIERRA"
     }
     
-    crearMensaje()
+    combate()
 }
 
-function crearMensaje() {
+//Definicion de quien gana, pierde o empata
+function combate() {
+    if (ataqueJugador == ataqueEnemigo) {
+        crearMensaje("EMPATE")
+    } else if(ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA" ) {
+        crearMensaje("GANASTE")
+    } else if(ataqueJugador == "AGUA" && ataqueEnemigo == "FUEGO"){
+        crearMensaje("GANASTE")
+    } else if (ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA") {
+        crearMensaje("GANASTE")
+    } else {
+        crearMensaje("PERDISTE")
+    }
+    
+    
+}
+
+function crearMensaje(resultadoBatalla) {
     let sectionMensaje = document.getElementById('mensaje')
     let parrafo = document.createElement('p')
-    parrafo.innerHTML = 'Tu mascota ataco con ' + ataqueJugador + ', la mascota del enemigo ataco con ' + ataqueEnemigo
+    parrafo.innerHTML = 'Tu mascota ataco con ' + ataqueJugador + ', la mascota del enemigo ataco con ' + ataqueEnemigo + ' - ' + '¡¡'+ resultadoBatalla +'!!'
 
     sectionMensaje.appendChild(parrafo)
 }
