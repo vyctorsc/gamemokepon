@@ -1,6 +1,8 @@
 //Variable Globales
 let ataqueJugador
 let ataqueEnemigo
+let vidasJugador = 3
+let vidasEnemigo = 3
 
 function iniciarJuego(){
     const botonMascotaJugador = document.getElementById('boton-mascota')
@@ -84,25 +86,52 @@ function ataqueAleatorioEnemigo() {
 
 //Definicion de quien gana, pierde o empata
 function combate() {
+    let spanVidasJugador = document.getElementById('vidas-jugador')
+    let spanVidasEnemigo = document.getElementById('vidas-enemigo')
     if (ataqueJugador == ataqueEnemigo) {
         crearMensaje("EMPATE")
     } else if(ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA" ) {
         crearMensaje("GANASTE")
+        vidasEnemigo = vidasEnemigo - 1
+        spanVidasEnemigo.innerHTML = vidasEnemigo
     } else if(ataqueJugador == "AGUA" && ataqueEnemigo == "FUEGO"){
         crearMensaje("GANASTE")
+        vidasEnemigo = vidasEnemigo - 1
+        spanVidasEnemigo.innerHTML = vidasEnemigo
     } else if (ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA") {
         crearMensaje("GANASTE")
+        vidasEnemigo = vidasEnemigo - 1
+        spanVidasEnemigo.innerHTML = vidasEnemigo
     } else {
         crearMensaje("PERDISTE")
+        vidasJugador = vidasJugador - 1
+        spanVidasJugador.innerHTML = vidasJugador
     }
     
-    
+    revisarVidas()
+}
+
+function revisarVidas() {
+    if (vidasEnemigo == 0) {
+        crearMensajeFinal("Felicitaciones!! GANASTE :)")
+    } else if (vidasJugador == 0) {
+        crearMensajeFinal("Lo siento, PERDISTE :(")
+    }
+        
 }
 
 function crearMensaje(resultadoBatalla) {
     let sectionMensaje = document.getElementById('mensaje')
     let parrafo = document.createElement('p')
     parrafo.innerHTML = 'Tu mascota ataco con ' + ataqueJugador + ', la mascota del enemigo ataco con ' + ataqueEnemigo + ' - ' + '¡¡'+ resultadoBatalla +'!!'
+
+    sectionMensaje.appendChild(parrafo)
+}
+
+function crearMensajeFinal(resultadoFinal) {
+    let sectionMensaje = document.getElementById('mensaje')
+    let parrafo = document.createElement('p')
+    parrafo.innerHTML = resultadoFinal
 
     sectionMensaje.appendChild(parrafo)
 }
