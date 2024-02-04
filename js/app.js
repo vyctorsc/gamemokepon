@@ -6,14 +6,15 @@ let vidasEnemigo = 3
 
 function iniciarJuego(){
     const botonMascotaJugador = document.getElementById('boton-mascota')
-    const botonFuego = document.getElementById('boton-fuego')
-    const botonAgua = document.getElementById('boton-agua')
-    const botonTierra = document.getElementById('boton-tierra')
-
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
+    const botonFuego = document.getElementById('boton-fuego')
     botonFuego.addEventListener('click', ataqueFuego)
+    const botonAgua = document.getElementById('boton-agua')
     botonAgua.addEventListener('click', ataqueAgua)
+    const botonTierra = document.getElementById('boton-tierra')
     botonTierra.addEventListener('click', ataqueTierra)
+    const botonReiniciar = document.getElementById('boton-reiniciar')
+    botonReiniciar.addEventListener('click',reiniciarJuego)
 }
 
 function seleccionarMascotaJugador() {
@@ -134,8 +135,18 @@ function crearMensajeFinal(resultadoFinal) {
     parrafo.innerHTML = resultadoFinal
 
     sectionMensaje.appendChild(parrafo)
+
+    const botonFuego = document.getElementById('boton-fuego')
+    botonFuego.disabled = true
+    const botonAgua = document.getElementById('boton-agua')
+    botonAgua.disabled = true
+    const botonTierra = document.getElementById('boton-tierra')
+    botonTierra.disabled = true
 }
 
+function reiniciarJuego() {
+    location.reload()
+}
 
 function aleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
