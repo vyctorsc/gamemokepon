@@ -5,8 +5,14 @@ let vidasJugador = 3
 let vidasEnemigo = 3
 
 function iniciarJuego(){
+    const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
+    sectionSeleccionarAtaque.style.display = 'none'
+    const sectionReiniciar = document.getElementById('reiniciar')
+    sectionReiniciar.style.display = 'none'
+
     const botonMascotaJugador = document.getElementById('boton-mascota')
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
+    
     const botonFuego = document.getElementById('boton-fuego')
     botonFuego.addEventListener('click', ataqueFuego)
     const botonAgua = document.getElementById('boton-agua')
@@ -18,6 +24,12 @@ function iniciarJuego(){
 }
 
 function seleccionarMascotaJugador() {
+    const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
+    sectionSeleccionarMascota.style.display = 'none'
+
+    const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
+    sectionSeleccionarAtaque.style.display = 'block'
+
     const selectHipodoge = document.getElementById('hipodoge')
     const selectCapipepo = document.getElementById('capipepo')
     const selectRatigueya = document.getElementById('ratigueya')
@@ -142,6 +154,9 @@ function crearMensajeFinal(resultadoFinal) {
     botonAgua.disabled = true
     const botonTierra = document.getElementById('boton-tierra')
     botonTierra.disabled = true
+
+    const sectionReiniciar = document.getElementById('reiniciar')
+    sectionReiniciar.style.display = 'block'
 }
 
 function reiniciarJuego() {
