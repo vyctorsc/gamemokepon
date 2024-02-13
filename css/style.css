@@ -59,3 +59,40 @@ input{
     font-family: 'Protest Guerrilla', sans-serif;
     margin: 20px;
 }
+
+/*SEGUNDA INTERFAZ o VISTA*/
+#seleccionar-ataque{
+    flex-direction: column;
+    align-items: center;
+}
+.botones-ataque{
+    box-sizing: border-box;
+    background-color:#337CCF;
+    border-radius: 20px;
+    width: 100px;
+    border-color: transparent;
+    margin: 5px;
+    color: white;
+    font-family: 'Protest Guerrilla', sans-serif;
+
+}
+#mensaje{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 280px;
+    background-color: #FFC436;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+#boton-reiniciar{
+    border: 3px solid #337CCF;
+    border-radius: 20px;
+    background: transparent;
+    color: #191D88;
+    font-family: 'Protest Guerrilla', sans-serif;
+    margin: 20px;
+    width: 100px;
+}
