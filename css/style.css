@@ -8,14 +8,15 @@ body{
 #seleccionar-mascota{
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     
 }
 
 .titulo{
     color: white;
-    font-size: 32px
+    font-size: 32px;
+    font-family: 'Protest Guerrilla', sans-serif;
 }
 .subtitulo{
     color: white;
@@ -48,9 +49,12 @@ input{
     display: none;
 }
 
+input:checked + label{
+    background-color: #FFC436;
+}
+
 
 .btn-seleccionar{
-    box-sizing: border-box;
     width: 200px;
     height: 40px;
     border: 3px solid #FFC436;
@@ -63,6 +67,7 @@ input{
 
 /*SEGUNDA INTERFAZ o VISTA*/
 #seleccionar-ataque{
+    display: flex;
     flex-direction: column;
     align-items: center;
 }
@@ -70,7 +75,8 @@ input{
     box-sizing: border-box;
     background-color:#337CCF;
     border-radius: 20px;
-    width: 100px;
+    width: 180px;
+    height: 50px;
     border-color: transparent;
     margin: 5px;
     color: white;

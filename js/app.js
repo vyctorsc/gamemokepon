@@ -52,7 +52,7 @@ function seleccionarMascotaJugador() {
 }
 
 //Seleccion del enemigo aleatoriamente segun el numero escogido aleatoriamente desde un rango de 1 a 4
-//Los cualea representan los nombre de cada creatura
+//Los cuale representan los nombre de cada creatura
 function seleccionarMascotaEnemigo(){
     const selectAleatorio = aleatorio(1, 4)
     const spanMascotaEnemigo = document.getElementById('mascota-enemigo')
