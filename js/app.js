@@ -22,29 +22,68 @@ const sectionMensaje = document.getElementById('resultado')
 const ataqueDelJugador = document.getElementById('ataques-Del-Jugador')
 const ataqueDelEnemigo = document.getElementById('ataques-Del-Enemigo')
 
+let mokepones = []
 //Variable Globales
 let ataqueJugador
 let ataqueEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
 
-//Creando la clase mokepon
+//Creando la clase mokepon - Todas las clases inician con mayuscula
 class Mokepon {
     constructor(nombre, foto, vida){
         this.nombre = nombre
         this.foto = foto
         this.vida = vida
+        this.ataques = []
     }
 }
 
-//De la clase mokepon, creamos los sgtes objetos o los llamados creaturas mokepon
-let hipodoge = new Mokepon('Hipodoge','./assets/hipodoge.png', 5)
-
-let capipepo = new Mokepon('Capipepo','./assets/capipepo.png', 5)
-
+//De la clase mokepon, creamos o  instanciamos los sgtes objetos o los llamados creaturas mokepon
+let hipodoge  = new Mokepon('Hipodoge','./assets/hipodoge.png', 5)
+let capipepo  = new Mokepon('Capipepo','./assets/capipepo.png', 5)
 let ratigueya = new Mokepon('Ratigueya','./assets/ratigueya.png', 5)
-
 let tucapalma = new Mokepon('Tucapalma','./assets/tucapalma.png', 5)
+
+mokepones.push(hipodoge,capipepo,ratigueya)
+console.log(mokepones)
+
+//creando y añadiendo valores al array o arreglos, ataques[] a cada objeto con el metodo push
+hipodoge.ataques.push(
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '🔥', id: 'boton-fuego'},
+    {nombre: '🌎', id: 'boton-tierra'}
+)
+
+capipepo.ataques.push(
+    {nombre: '🌎', id: 'boton-tierra'},
+    {nombre: '🌎', id: 'boton-tierra'},
+    {nombre: '🌎', id: 'boton-tierra'},
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '🔥', id: 'boton-fuego'},
+    
+)
+
+ratigueya.ataques.push(
+    {nombre: '🔥', id: 'boton-fuego'},
+    {nombre: '🔥', id: 'boton-fuego'},
+    {nombre: '🔥', id: 'boton-fuego'},
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '🌎', id: 'boton-tierra'}
+)
+
+tucapalma.ataques.push(
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '🔥', id: 'boton-fuego'},
+    {nombre: '🌎', id: 'boton-tierra'}
+)
+
+//Añadiendo cada objeto al arreglo mokepones con el metodo push
+mokepones.push(hipodoge,capipepo,ratigueya,tucapalma)
 
 function iniciarJuego(){
     sectionSeleccionarAtaque.style.display = 'none'
