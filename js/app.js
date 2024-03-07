@@ -21,11 +21,13 @@ const spanVidasEnemigo = document.getElementById('vidas-enemigo')
 const sectionMensaje = document.getElementById('resultado')
 const ataqueDelJugador = document.getElementById('ataques-Del-Jugador')
 const ataqueDelEnemigo = document.getElementById('ataques-Del-Enemigo')
+const contenedorTarjetas = document.getElementById('contenedor-Tarjetas')
 
 let mokepones = []
 //Variable Globales
 let ataqueJugador
 let ataqueEnemigo
+let opcionMokepones
 let vidasJugador = 3
 let vidasEnemigo = 3
 
@@ -45,10 +47,8 @@ let capipepo  = new Mokepon('Capipepo','./assets/capipepo.png', 5)
 let ratigueya = new Mokepon('Ratigueya','./assets/ratigueya.png', 5)
 let tucapalma = new Mokepon('Tucapalma','./assets/tucapalma.png', 5)
 
-mokepones.push(hipodoge,capipepo,ratigueya)
-console.log(mokepones)
-
 //creando y añadiendo valores al array o arreglos, ataques[] a cada objeto con el metodo push
+//Atraves de esta forma podemos llegar a los atributos o propiedades de cada objeto
 hipodoge.ataques.push(
     {nombre: '💧', id: 'boton-agua'},
     {nombre: '💧', id: 'boton-agua'},
@@ -87,6 +87,19 @@ mokepones.push(hipodoge,capipepo,ratigueya,tucapalma)
 
 function iniciarJuego(){
     sectionSeleccionarAtaque.style.display = 'none'
+    //El metodo forEach nos ayudara a iterar o recorrer cada uno de nuestros objetos que en este caso este dentro
+    //de nuestro arreglo llamado mokepones, en el cual se encuentrs nustros 4 objetos o personajes
+    //forEach -> Por cada uno de los elementos de nuestro arreglo(mokepones[]) haz algoo
+    mokepones.forEach((mokepon) => {
+        opcionMokepones = `
+        <input type="radio" name="mascota" id=${mokepon.nombre} />
+        <label class="tarjeta-mokepon" for="${mokepon.nombre}">
+            <p>${mokepon.nombre}</p>
+            <img src=${mokepon.foto} alt=${mokepon.nombre}>
+        </label>
+        `
+        contenedorTarjetas.innerHTML += opcionMokepones
+    })
     sectionReiniciar.style.display = 'none'
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
     botonFuego.addEventListener('click', ataqueFuego)
