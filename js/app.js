@@ -118,13 +118,13 @@ function seleccionarMascotaJugador() {
     sectionSeleccionarAtaque.style.display = 'flex'
 
     if (selectHipodoge.checked) {
-        spanMascotaJugador.innerHTML = "Hipodoge"
+        spanMascotaJugador.innerHTML = "selectHipodoge.id"
     } else if (selectCapipepo.checked){
-        spanMascotaJugador.innerHTML = "Capipepo"
+        spanMascotaJugador.innerHTML = "selectCapipepo.id"
     } else if (selectRatigueya.checked) {
-        spanMascotaJugador.innerHTML = "Ratigueya"
+        spanMascotaJugador.innerHTML = "SelectRatigueya.id"
     } else if (selectTucapalma.checked){
-        spanMascotaJugador.innerHTML = "Tucapalma"
+        spanMascotaJugador.innerHTML = "selectTucapalma.id"
     } else { 
         alert("Por Favor Seleccione una mascota ")
     }
