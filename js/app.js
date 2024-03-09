@@ -28,6 +28,7 @@ let selectHipodoge
 let selectCapipepo
 let selectRatigueya 
 let selectTucapalma 
+let mascotaJugador
 let vidasJugador = 3
 let vidasEnemigo = 3
 
@@ -83,7 +84,7 @@ tucapalma.ataques.push(
 )
 
 //Añadiendo cada objeto al arreglo mokepones con el metodo push
-mokepones.push(hipodoge,capipepo,ratigueya,tucapalma)
+mokepones.push(hipodoge, capipepo, ratigueya, tucapalma)
 
 function iniciarJuego(){
     sectionSeleccionarAtaque.style.display = 'none'
@@ -119,33 +120,41 @@ function seleccionarMascotaJugador() {
 
     if (selectHipodoge.checked) {
         spanMascotaJugador.innerHTML = "selectHipodoge.id"
+        mascotaJugador = selectHipodoge.id
     } else if (selectCapipepo.checked){
         spanMascotaJugador.innerHTML = "selectCapipepo.id"
+        mascotaJugador = selectCapipepo.id
     } else if (selectRatigueya.checked) {
-        spanMascotaJugador.innerHTML = "SelectRatigueya.id"
+        spanMascotaJugador.innerHTML = "selectRatigueya.id"
+        mascotaJugador = selectRatigueya.id
     } else if (selectTucapalma.checked){
         spanMascotaJugador.innerHTML = "selectTucapalma.id"
+        mascotaJugador =selectTucapalma.id
     } else { 
         alert("Por Favor Seleccione una mascota ")
     }
 
+    extraerAtaques(mascotaJugador)
     seleccionarMascotaEnemigo()
+}
+
+function extraerAtaques(mascotaJugador){
+    let ataques
+
+    for (let i = 0; i < mokepones.length; i++) {
+        if (mascotaJugador === mokepones[i].nombre) {
+            ataques = mokepones[i].ataques
+        }
+    }
+    console.log(ataques)
 }
 
 //Seleccion del enemigo aleatoriamente segun el numero escogido aleatoriamente desde un rango de 1 a 4
 //Los cuale representan los nombre de cada creatura
 function seleccionarMascotaEnemigo(){
-    const selectAleatorio = aleatorio(1, 4)
+    const selectAleatorio = aleatorio(0, mokepones.length - 1)
 
-    if (selectAleatorio == 1){
-        spanMascotaEnemigo.innerHTML = "Hipodoge"
-    } else if (selectAleatorio == 2) {
-        spanMascotaEnemigo.innerHTML = "Capipepo"
-    } else if (selectAleatorio == 3) {
-        spanMascotaEnemigo.innerHTML = "Ratigueya"
-    } else {
-        spanMascotaEnemigo.innerHTML = "Tucapalma"
-    }
+    spanMascotaEnemigo.innerHTML = mokepones[selectAleatorio].nombre
 }
  
 //Ataque del Jugador segun sea su eleccion presionando alguno de los botones de ataque - invoca la funcion
